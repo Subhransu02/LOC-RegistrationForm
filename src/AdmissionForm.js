@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import "./AdmissionForm.css";
-import ThankYou from "./ThankYou";
-import { Link } from "react";
 class AdmissionForm extends Component {
   constructor(props) {
     super(props);
@@ -309,7 +307,9 @@ class AdmissionForm extends Component {
                 {this.state.message}
               </p>
               <button className="submit">Submit</button>
+              <p className="copy">&copy; 2023 ENIGMA</p>
             </form>
+            
           </div>
         </div>
       </div>
@@ -319,24 +319,3 @@ class AdmissionForm extends Component {
 
 export default AdmissionForm;
 
-{
-  /* <script>
-    setTimeout(function(){
-        $('.loader_bg').fadeToggle();
-    }, 1000);
-</script> */
-}
-
-// @keyframes loader {
-//   0%{
-//       transform: scale(0);
-//       opacity:0;
-//   }
-//   50%{
-//       opacity:1;
-//   }
-//   100%{
-//       transform: scale(1);
-//       opacity:0;
-//   }
-// }
