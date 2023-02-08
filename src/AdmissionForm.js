@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./AdmissionForm.css";
+const { REACT_APP_API_ENDPOINT } = process.env;
 class AdmissionForm extends Component {
   constructor(props) {
     super(props);
