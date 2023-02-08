@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./AdmissionForm.css";
+import Loader from "./Loader";
 
 class AdmissionForm extends Component {
   constructor(props) {
@@ -15,6 +16,7 @@ class AdmissionForm extends Component {
       formErrors: {},
       message: "",
       msgcolor: "",
+      response: false
     };
 
     this.initialState = this.state;
@@ -91,6 +93,7 @@ class AdmissionForm extends Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
+    this.setState({ response: true });
 
     let target = e.target;
     let formData = {};
@@ -111,10 +114,13 @@ class AdmissionForm extends Component {
 
     const data = await response.json();
     if (response.ok) {
+      this.setState({ response: false });
       this.setState({ message: "Thanks For Registering" });
       this.setState({ msgcolor: "#1bec1b" });
+
     } else {
       let msg = data.error.message;
+      this.setState({ response: false });
       this.setState({ message: msg });
       this.setState({ msgcolor: "red" });
     }
@@ -140,7 +146,7 @@ class AdmissionForm extends Component {
     return (
       <div className="formDiv">
         <div className="form_wrap">
-          <div className="heading">Lift-Off C  </div>   
+          <div className="heading">Lift-Off C  </div>
           <div className="form_comp">
             <form onSubmit={this.handleSubmit}>
               <div>
@@ -303,16 +309,18 @@ class AdmissionForm extends Component {
                   </div>
                 )}
               </div>
-              <p
-                className="message"
-                style={{ color: `${this.state.msgcolor}`, textAlign: "center" }}
-              >
-                {this.state.message}
-              </p>
+              {(this.state.response) && <div className="loader"><Loader /></div>}
+                <p
+                  className="message"
+                  style={{ color: `${this.state.msgcolor}`, textAlign: "center" }}
+                >
+                  {this.state.message}
+                </p>
+
               <button className="submit">Submit</button>
               <p className="copy">Enigma VSSUT &copy; 2023 </p>
             </form>
-            
+
           </div>
         </div>
       </div>
