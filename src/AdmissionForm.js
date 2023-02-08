@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./AdmissionForm.css";
-const { REACT_APP_API_ENDPOINT } = process.env;
+
 class AdmissionForm extends Component {
   constructor(props) {
     super(props);
@@ -135,10 +135,12 @@ class AdmissionForm extends Component {
       codingProfileErr,
     } = this.state.formErrors;
 
+    // IoIosRocket
+
     return (
       <div className="formDiv">
         <div className="form_wrap">
-          <div className="heading">LOC Registration Form </div>
+          <div className="heading">Lift-Off C  </div>   
           <div className="form_comp">
             <form onSubmit={this.handleSubmit}>
               <div>
@@ -308,7 +310,7 @@ class AdmissionForm extends Component {
                 {this.state.message}
               </p>
               <button className="submit">Submit</button>
-              <p className="copy">&copy; 2023 ENIGMA</p>
+              <p className="copy">Enigma VSSUT &copy; 2023 </p>
             </form>
             
           </div>
