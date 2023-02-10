@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./AdmissionForm.css";
+import IconRocketLaunch from "./IconRocketLaunch";
 import Loader from "./Loader";
 
 class AdmissionForm extends Component {
@@ -144,186 +145,189 @@ class AdmissionForm extends Component {
     // IoIosRocket
 
     return (
-      <div className="formDiv">
-        <div className="form_wrap">
-          <div className="heading">Lift-Off C  </div>
-          <div className="form_comp">
-            <form onSubmit={this.handleSubmit}>
-              <div>
-                <label htmlFor="fullname">Full Name</label>
-                <input
-                  type="text"
-                  name="fullname"
-                  value={this.state.fullname}
-                  onChange={this.handleChange}
-                  placeholder="Your fullname.."
-                  className={fullnameErr ? " showError" : ""}
-                  onInvalid={(e) =>
-                    e.target.setCustomValidity("Full Name is required")
-                  }
-                  onInput={(e) => e.target.setCustomValidity("")}
-                  required
-                />
-                {fullnameErr && (
-                  <div style={{ color: "red", paddingBottom: 10 }}>
-                    {fullnameErr}
-                  </div>
-                )}
-              </div>
-              <div>
-                <label htmlFor="text">Registration No</label>
-                <input
-                  max="10"
-                  type="text"
-                  name="regdNo"
-                  value={this.state.regdNo}
-                  onChange={this.handleChange}
-                  placeholder="regdNo.."
-                  className={regdNoErr ? " showError" : ""}
-                  onInvalid={(e) =>
-                    e.target.setCustomValidity("Registration No is required")
-                  }
-                  onInput={(e) => e.target.setCustomValidity("")}
-                  required
-                />
-                {regdNoErr && (
-                  <div style={{ color: "red", paddingBottom: 10 }}>
-                    {regdNoErr}
-                  </div>
-                )}
-              </div>
-              <div>
-                <label htmlFor="year">Year</label>
-                <select
-                  name="year"
-                  onChange={this.handleChange}
-                  className={yearErr ? " showError" : ""}
-                  value={this.state.year}
-                  onInvalid={(e) =>
-                    e.target.setCustomValidity("Year is required")
-                  }
-                  onInput={(e) => e.target.setCustomValidity("")}
-                  required
-                >
-                  <option value="select">--Select--</option>
-                  <option value={1}>1st</option>
-                  <option value={2}>2nd</option>
-                </select>
-                {yearErr && (
-                  <div style={{ color: "red", paddingBottom: 10 }}>
-                    {yearErr}
-                  </div>
-                )}
-              </div>
-              <div>
-                <label htmlFor="branch">Branch</label>
-                <select
-                  name="branch"
-                  value={this.state.branch}
-                  onChange={this.handleChange}
-                  className={branchErr ? " showError" : ""}
-                  onInvalid={(e) =>
-                    e.target.setCustomValidity("Branch is required")
-                  }
-                  onInput={(e) => e.target.setCustomValidity("")}
-                  required
-                >
-                  <option value="select">--Select--</option>
-                  <option value="Chemical">Chemical</option>
-                  <option value="Civil">Civil</option>
-                  <option value="CSE">CSE</option>
-                  <option value="EE">EE</option>
-                  <option value="EEE">EEE</option>
-                  <option value="ETC">ETC</option>
-                  <option value="IT">IT</option>
-                  <option value="Mechanical">Mechanical</option>
-                  <option value="MME">MME</option>
-                  <option value="Production">Production</option>
-                </select>
-                {branchErr && (
-                  <div style={{ color: "red", paddingBottom: 10 }}>
-                    {branchErr}
-                  </div>
-                )}
-              </div>
-              <div>
-                <label htmlFor="email">Email Id</label>
-                <input
-                  type="email"
-                  name="email"
-                  value={this.state.email}
-                  onChange={this.handleChange}
-                  placeholder="Your email id.."
-                  className={emailErr ? " showError" : ""}
-                  onInvalid={(e) =>
-                    e.target.setCustomValidity("Email Id is required")
-                  }
-                  onInput={(e) => e.target.setCustomValidity("")}
-                  required
-                />
-                {emailErr && (
-                  <div style={{ color: "red", paddingBottom: 10 }}>
-                    {emailErr}
-                  </div>
-                )}
-              </div>
-              <div>
-                <label htmlFor="phone">Phone Number</label>
-                <input
-                  type="text"
-                  name="phone"
-                  onChange={this.handleChange}
-                  value={this.state.phone}
-                  placeholder="Your phone number.."
-                  className={phoneErr ? " showError" : ""}
-                  onInvalid={(e) =>
-                    e.target.setCustomValidity("Phone Number is required")
-                  }
-                  onInput={(e) => e.target.setCustomValidity("")}
-                  required
-                />
-                {phoneErr && (
-                  <div style={{ color: "red", paddingBottom: 10 }}>
-                    {phoneErr}
-                  </div>
-                )}
-              </div>
-              <div>
-                <label htmlFor="codingProfile">Coding Profile</label>
-                <input
-                  type="text"
-                  name="codingProfile"
-                  value={this.state.codingProfile}
-                  onChange={this.handleChange}
-                  placeholder="Your codingProfile.."
-                  className={codingProfileErr ? " showError" : ""}
-                  onInvalid={(e) =>
-                    e.target.setCustomValidity("Coding Profile is required")
-                  }
-                  onInput={(e) => e.target.setCustomValidity("")}
-                  required
-                />
-                {codingProfileErr && (
-                  <div style={{ color: "red", paddingBottom: 10 }}>
-                    {codingProfileErr}
-                  </div>
-                )}
-              </div>
-              {(this.state.response) && <div className="loader"><Loader /></div>}
-                <p
-                  className="message"
-                  style={{ color: `${this.state.msgcolor}`, textAlign: "center" }}
-                >
-                  {this.state.message}
-                </p>
+      <>
+        <div className="formDiv">
+          <div className="heading">Lift-Off C  <IconRocketLaunch /></div>
+          <div className="form_wrap">
+            <div className="form_comp">
+              <form onSubmit={this.handleSubmit}>
+                <div>
+                  <label htmlFor="fullname">Full Name</label>
+                  <input
+                    type="text"
+                    name="fullname"
+                    value={this.state.fullname}
+                    onChange={this.handleChange}
+                    placeholder="Your full name.."
+                    className={fullnameErr ? " showError" : ""}
+                    onInvalid={(e) =>
+                      e.target.setCustomValidity("Full Name is required")
+                    }
+                    onInput={(e) => e.target.setCustomValidity("")}
+                    required
+                  />
+                  {fullnameErr && (
+                    <div style={{ color: "red", paddingBottom: 10 }}>
+                      {fullnameErr}
+                    </div>
+                  )}
+                </div>
+                <div>
+                  <label htmlFor="text">Registration No</label>
+                  <input
+                    max="10"
+                    type="text"
+                    name="regdNo"
+                    value={this.state.regdNo}
+                    onChange={this.handleChange}
+                    placeholder="Your registration number.."
+                    className={regdNoErr ? " showError" : ""}
+                    onInvalid={(e) =>
+                      e.target.setCustomValidity("Registration No is required")
+                    }
+                    onInput={(e) => e.target.setCustomValidity("")}
+                    required
+                  />
+                  {regdNoErr && (
+                    <div style={{ color: "red", paddingBottom: 10 }}>
+                      {regdNoErr}
+                    </div>
+                  )}
+                </div>
+                <div>
+                  <label htmlFor="year">Year</label>
+                  <select
+                    name="year"
+                    onChange={this.handleChange}
+                    className={yearErr ? " showError" : ""}
+                    value={this.state.year}
+                    onInvalid={(e) =>
+                      e.target.setCustomValidity("Year is required")
+                    }
+                    onInput={(e) => e.target.setCustomValidity("")}
+                    required
+                  >
+                    <option value="select">--Select--</option>
+                    <option value={1}>1st</option>
+                    <option value={2}>2nd</option>
+                  </select>
+                  {yearErr && (
+                    <div style={{ color: "red", paddingBottom: 10 }}>
+                      {yearErr}
+                    </div>
+                  )}
+                </div>
+                <div>
+                  <label htmlFor="branch">Branch</label>
+                  <select
+                    name="branch"
+                    value={this.state.branch}
+                    onChange={this.handleChange}
+                    className={branchErr ? " showError" : ""}
+                    onInvalid={(e) =>
+                      e.target.setCustomValidity("Branch is required")
+                    }
+                    onInput={(e) => e.target.setCustomValidity("")}
+                    required
+                  >
+                    <option value="select">--Select--</option>
+                    <option value="Chemical">Chemical</option>
+                    <option value="Civil">Civil</option>
+                    <option value="CSE">CSE</option>
+                    <option value="EE">EE</option>
+                    <option value="EEE">EEE</option>
+                    <option value="ETC">ETC</option>
+                    <option value="IT">IT</option>
+                    <option value="Mechanical">Mechanical</option>
+                    <option value="MME">MME</option>
+                    <option value="Production">Production</option>
+                  </select>
+                  {branchErr && (
+                    <div style={{ color: "red", paddingBottom: 10 }}>
+                      {branchErr}
+                    </div>
+                  )}
+                </div>
+                <div>
+                  <label htmlFor="email">Email Id</label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={this.state.email}
+                    onChange={this.handleChange}
+                    placeholder="Your email id.."
+                    className={emailErr ? " showError" : ""}
+                    onInvalid={(e) =>
+                      e.target.setCustomValidity("Email Id is required")
+                    }
+                    onInput={(e) => e.target.setCustomValidity("")}
+                    required
+                  />
+                  {emailErr && (
+                    <div style={{ color: "red", paddingBottom: 10 }}>
+                      {emailErr}
+                    </div>
+                  )}
+                </div>
+                <div>
+                  <label htmlFor="phone">Phone Number</label>
+                  <input
+                    type="text"
+                    name="phone"
+                    onChange={this.handleChange}
+                    value={this.state.phone}
+                    placeholder="Your phone number.."
+                    className={phoneErr ? " showError" : ""}
+                    onInvalid={(e) =>
+                      e.target.setCustomValidity("Phone Number is required")
+                    }
+                    onInput={(e) => e.target.setCustomValidity("")}
+                    required
+                  />
+                  {phoneErr && (
+                    <div style={{ color: "red", paddingBottom: 10 }}>
+                      {phoneErr}
+                    </div>
+                  )}
+                </div>
+                <div>
+                  <label htmlFor="codingProfile">Coding Profile</label>
+                  <input
+                    type="text"
+                    name="codingProfile"
+                    value={this.state.codingProfile}
+                    onChange={this.handleChange}
+                    placeholder="HackerRank/HackerEarth profile link.."
+                    className={codingProfileErr ? " showError" : ""}
+                    onInvalid={(e) =>
+                      e.target.setCustomValidity("Coding Profile is required")
+                    }
+                    onInput={(e) => e.target.setCustomValidity("")}
+                    required
+                  />
+                  {codingProfileErr && (
+                    <div style={{ color: "red", paddingBottom: 10 }}>
+                      {codingProfileErr}
+                    </div>
+                  )}
+                </div>
+                {(this.state.response) && <div className="loader"><Loader /></div>}
+                  <p
+                    className="message"
+                    style={{ color: `${this.state.msgcolor}`, textAlign: "center" }}
+                  >
+                    {this.state.message}
+                  </p>
 
-              <button className="submit">Submit</button>
-              <p className="copy">Enigma VSSUT &copy; 2023 </p>
-            </form>
+                {!this.state.response && <button className="submit">Submit</button>}
+                {this.state.response && <button className="submit" disabled>Submitting...</button>}
+              </form>
 
+            </div>
           </div>
+          <p className="copy">Enigma VSSUT &copy; 2023 </p>
         </div>
-      </div>
+      </>
     );
   }
 }
