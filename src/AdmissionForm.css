@@ -69,6 +69,11 @@ select:required:invalid{
 option{
   color: black;
 }
+
+input:focus, select:focus{
+  outline: 1px solid #45ed4e;
+  border: 2px solid black;
+}
 .submit {
   width: 100%;
   height: fit-content;
