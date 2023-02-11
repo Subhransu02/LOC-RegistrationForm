@@ -71,7 +71,7 @@ option{
 }
 
 input:focus, select:focus{
-  outline: 1px solid #45ed4e;
+  outline: 2px solid #45ed4e;
   border: 2px solid black;
 }
 .submit {
