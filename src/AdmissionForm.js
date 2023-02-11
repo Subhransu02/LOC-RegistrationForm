@@ -207,7 +207,7 @@ class AdmissionForm extends Component {
                     onInput={(e) => e.target.setCustomValidity("")}
                     required
                   >
-                    <option value="select">--Select--</option>
+                    <option value="" disable selected hidden>--Select--</option>
                     <option value={1}>1st</option>
                     <option value={2}>2nd</option>
                   </select>
@@ -230,17 +230,17 @@ class AdmissionForm extends Component {
                     onInput={(e) => e.target.setCustomValidity("")}
                     required
                   >
-                    <option value="select">--Select--</option>
-                    <option value="Chemical">Chemical</option>
-                    <option value="Civil">Civil</option>
-                    <option value="CSE">CSE</option>
-                    <option value="EE">EE</option>
-                    <option value="EEE">EEE</option>
-                    <option value="ETC">ETC</option>
-                    <option value="IT">IT</option>
-                    <option value="Mechanical">Mechanical</option>
-                    <option value="MME">MME</option>
-                    <option value="Production">Production</option>
+                    <option value="" disable selected hidden>--Select--</option>
+                    <option value="CHE">Chemical Engineering</option>
+                    <option value="CE">Civil Engineering</option>
+                    <option value="CSE">Computer Science & Engineering</option>
+                    <option value="EE">Electrical Engineering</option>
+                    <option value="EEE">Electrical & Electronics Engineering</option>
+                    <option value="ETC">Electronics & Telecomm. Engineering</option>
+                    <option value="IT">Information Technology</option>
+                    <option value="ME">Mechanical Engineering</option>
+                    <option value="MME">Metallurgical & Materials Engineering</option>
+                    <option value="PE">Production Engineering</option>
                   </select>
                   {branchErr && (
                     <div style={{ color: "red", paddingBottom: 10 }}>
@@ -300,7 +300,7 @@ class AdmissionForm extends Component {
                     placeholder="HackerRank/HackerEarth profile link.."
                     className={codingProfileErr ? " showError" : ""}
                     onInvalid={(e) =>
-                      e.target.setCustomValidity("Coding Profile is required")
+                      e.target.setCustomValidity("Coding Profile Link is required")
                     }
                     onInput={(e) => e.target.setCustomValidity("")}
                     required
@@ -311,7 +311,7 @@ class AdmissionForm extends Component {
                     </div>
                   )}
                 </div>
-                {(this.state.response) && <div className="loader"><Loader /></div>}
+                
                   <p
                     className="message"
                     style={{ color: `${this.state.msgcolor}`, textAlign: "center" }}
@@ -320,7 +320,7 @@ class AdmissionForm extends Component {
                   </p>
 
                 {!this.state.response && <button className="submit">Submit</button>}
-                {this.state.response && <button className="submit" disabled>Submitting...</button>}
+                {this.state.response && <button className="submit" disabled>{(this.state.response) && <div className="loader"><Loader /></div>}</button>}
               </form>
 
             </div>
