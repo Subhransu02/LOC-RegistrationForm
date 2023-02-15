@@ -261,6 +261,9 @@ class AdmissionForm extends Component {
                     <option value="ME">Mechanical Engineering</option>
                     <option value="MME">Metallurgical & Materials Engineering</option>
                     <option value="PE">Production Engineering</option>
+                    <option value="B.Arch">B.Arch</option>
+                    <option value="MCA">MCA</option>
+                    <option value="MSC">MSC</option>
                   </select>
                   {branchErr && (
                     <div style={{ color: "red", paddingBottom: 10 }}>
