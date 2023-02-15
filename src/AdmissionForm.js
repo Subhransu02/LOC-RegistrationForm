@@ -12,6 +12,7 @@ class AdmissionForm extends Component {
       regdNo: "",
       year: "select",
       phone: "",
+      confirmphone: "",
       branch: "select",
       codingProfile: "",
       formErrors: {},
@@ -24,7 +25,7 @@ class AdmissionForm extends Component {
   }
 
   handleFormValidation() {
-    const { fullname, email, regdNo, year, phone, branch, codingProfile } =
+    const { fullname, email, regdNo, year, phone, confirmphone, branch, codingProfile } =
       this.state;
     let formErrors = {};
     let formIsValid = true;
@@ -69,6 +70,17 @@ class AdmissionForm extends Component {
         formErrors["phoneErr"] = "Invalid phone number.";
       }
     }
+    //Phone number
+    if (!confirmphone) {
+      formIsValid = false;
+      formErrors["confirmphoneErr"] = "Confirm your phone number.";
+    } else {
+      var mobPattern = /^(?:(?:\\+|0{0,2})91(\s*[\\-]\s*)?|[0]?)?[789]\d{9}$/;
+      if (!mobPattern.test(confirmphone)) {
+        formIsValid = false;
+        formErrors["confirmphoneErr"] = "Invalid phone number.";
+      }
+    }
 
     //branch
     if (branch === "" || branch === "select") {
@@ -102,33 +114,38 @@ class AdmissionForm extends Component {
       formData[target.elements[i].getAttribute("name")] =
         target.elements[i].value;
     }
-    const response = await fetch(
-      "https://loc-2023-api.onrender.com/api/loc/register",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
+    try {
+      const response = await fetch(
+        "https://loc-2023-api.onrender.com/api/loc/register",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
+  
+      const data = await response.json();
+      if (response.ok) {
+        this.setState({ response: false });
+        this.setState({ message: "Thanks For Registering" });
+        this.setState({ msgcolor: "#1bec1b" });
+  
+      } else {
+        let msg = data.error.message;
+        this.setState({ response: false });
+        this.setState({ message: msg });
+        this.setState({ msgcolor: "red" });
       }
-    );
-
-    const data = await response.json();
-    if (response.ok) {
-      this.setState({ response: false });
-      this.setState({ message: "Thanks For Registering" });
-      this.setState({ msgcolor: "#1bec1b" });
-
-    } else {
-      let msg = data.error.message;
-      this.setState({ response: false });
-      this.setState({ message: msg });
-      this.setState({ msgcolor: "red" });
+  
+      setTimeout(() => {
+        this.setState(this.initialState);
+      }, 5000);
+    } catch (error) {
+      console.log(error);
     }
-
-    setTimeout(() => {
-      this.setState(this.initialState);
-    }, 5000);
+    
   };
 
   render() {
@@ -138,6 +155,7 @@ class AdmissionForm extends Component {
       regdNoErr,
       yearErr,
       phoneErr,
+      confirmphoneErr,
       branchErr,
       codingProfileErr,
     } = this.state.formErrors;
@@ -210,6 +228,8 @@ class AdmissionForm extends Component {
                     <option value="" disable selected hidden>--Select--</option>
                     <option value={1}>1st</option>
                     <option value={2}>2nd</option>
+                    <option value={3}>3rd</option>
+                    <option value={4}>4th</option>
                   </select>
                   {yearErr && (
                     <div style={{ color: "red", paddingBottom: 10 }}>
@@ -280,6 +300,27 @@ class AdmissionForm extends Component {
                     className={phoneErr ? " showError" : ""}
                     onInvalid={(e) =>
                       e.target.setCustomValidity("Phone Number is required")
+                    }
+                    onInput={(e) => e.target.setCustomValidity("")}
+                    required
+                  />
+                  {phoneErr && (
+                    <div style={{ color: "red", paddingBottom: 10 }}>
+                      {phoneErr}
+                    </div>
+                  )}
+                </div>
+                <div>
+                  <label htmlFor="confirmphone">Confirm Phone Number</label>
+                  <input
+                    type="text"
+                    name="confirmphone"
+                    onChange={this.handleChange}
+                    value={this.state.confirmphone}
+                    placeholder="Confirm your phone number.."
+                    className={confirmphoneErr ? " showError" : ""}
+                    onInvalid={(e) =>
+                      e.target.setCustomValidity("Confirm phone Number is required")
                     }
                     onInput={(e) => e.target.setCustomValidity("")}
                     required
