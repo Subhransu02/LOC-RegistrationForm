@@ -105,6 +105,7 @@ class AdmissionForm extends Component {
   };
 
   handleSubmit = async (e) => {
+
     e.preventDefault();
     this.setState({ response: true });
 
@@ -129,9 +130,11 @@ class AdmissionForm extends Component {
       const data = await response.json();
       if (response.ok) {
         this.setState({ response: false });
-        this.setState({ message: "Thanks For Registering" });
+        // this.setState({ message: "Thanks For Registering" });
         this.setState({ msgcolor: "#1bec1b" });
-  
+        window.location.replace('/thanks');
+
+
       } else {
         let msg = data.error.message;
         this.setState({ response: false });
@@ -193,7 +196,6 @@ class AdmissionForm extends Component {
                 <div>
                   <label htmlFor="regdno">Registration No</label>
                   <input
-                    max="10"
                     type="number"
                     name="regdNo"
                     value={this.state.regdNo}
