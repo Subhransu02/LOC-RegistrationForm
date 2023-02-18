@@ -191,10 +191,10 @@ class AdmissionForm extends Component {
                   )}
                 </div>
                 <div>
-                  <label htmlFor="text">Registration No</label>
+                  <label htmlFor="regdno">Registration No</label>
                   <input
                     max="10"
-                    type="text"
+                    type="number"
                     name="regdNo"
                     value={this.state.regdNo}
                     onChange={this.handleChange}
@@ -295,7 +295,7 @@ class AdmissionForm extends Component {
                 <div>
                   <label htmlFor="phone">Phone Number</label>
                   <input
-                    type="text"
+                    type="number"
                     name="phone"
                     onChange={this.handleChange}
                     value={this.state.phone}
@@ -316,7 +316,7 @@ class AdmissionForm extends Component {
                 <div>
                   <label htmlFor="confirmphone">Confirm Phone Number</label>
                   <input
-                    type="text"
+                    type="number"
                     name="confirmphone"
                     onChange={this.handleChange}
                     value={this.state.confirmphone}
