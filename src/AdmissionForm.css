@@ -73,6 +73,13 @@ option{
   color: black;
 }
 
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 input:focus, select:focus{
   outline: 2px solid #45ed4e;
   border: 2px solid black;
