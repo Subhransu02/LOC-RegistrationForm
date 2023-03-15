@@ -24,80 +24,80 @@ class AdmissionForm extends Component {
     this.initialState = this.state;
   }
 
-  handleFormValidation() {
-    const { fullname, email, regdNo, year, phone, confirmphone, branch, codingProfile } =
-      this.state;
-    let formErrors = {};
-    let formIsValid = true;
+  // handleFormValidation() {
+  //   const { fullname, email, regdNo, year, phone, confirmphone, branch, codingProfile } =
+  //     this.state;
+  //   let formErrors = {};
+  //   let formIsValid = true;
 
-    //Student fullname
-    if (!fullname) {
-      formIsValid = false;
-      formErrors["fullnameErr"] = "fullname is required.";
-    }
+  //   //Student fullname
+  //   if (!fullname) {
+  //     formIsValid = false;
+  //     formErrors["fullnameErr"] = "fullname is required.";
+  //   }
 
-    //Email
-    if (!email) {
-      formIsValid = false;
-      formErrors["emailErr"] = "Email id is required.";
-    } else if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
-      formIsValid = false;
-      formErrors["emailErr"] = "Invalid email id.";
-    }
+  //   //Email
+  //   if (!email) {
+  //     formIsValid = false;
+  //     formErrors["emailErr"] = "Email id is required.";
+  //   } else if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+  //     formIsValid = false;
+  //     formErrors["emailErr"] = "Invalid email id.";
+  //   }
 
-    //regdNo
-    if (!regdNo) {
-      formIsValid = false;
-      formErrors["regdNoErr"] = "regdNo is required.";
-    } else {
-      var pattern = /^[0-9]$/;
-    }
+  //   //regdNo
+  //   if (!regdNo) {
+  //     formIsValid = false;
+  //     formErrors["regdNoErr"] = "regdNo is required.";
+  //   } else {
+  //     var pattern = /^[0-9]$/;
+  //   }
 
-    //year
-    if (year === "" || year === "select") {
-      formIsValid = false;
-      formErrors["yearErr"] = "Select year.";
-    }
+  //   //year
+  //   if (year === "" || year === "select") {
+  //     formIsValid = false;
+  //     formErrors["yearErr"] = "Select year.";
+  //   }
 
-    //Phone number
-    if (!phone) {
-      formIsValid = false;
-      formErrors["phoneErr"] = "Phone number is required.";
-    } else {
-      var mobPattern = /^(?:(?:\\+|0{0,2})91(\s*[\\-]\s*)?|[0]?)?[789]\d{9}$/;
-      if (!mobPattern.test(phone)) {
-        formIsValid = false;
-        formErrors["phoneErr"] = "Invalid phone number.";
-      }
-    }
-    //Phone number
-    if (!confirmphone) {
-      formIsValid = false;
-      formErrors["confirmphoneErr"] = "Confirm your phone number.";
-    } else {
-      var mobPattern = /^(?:(?:\\+|0{0,2})91(\s*[\\-]\s*)?|[0]?)?[789]\d{9}$/;
-      if (!mobPattern.test(confirmphone)) {
-        formIsValid = false;
-        formErrors["confirmphoneErr"] = "Invalid phone number.";
-      }
-    }
+  //   //Phone number
+  //   if (!phone) {
+  //     formIsValid = false;
+  //     formErrors["phoneErr"] = "Phone number is required.";
+  //   } else {
+  //     var mobPattern = /^(?:(?:\\+|0{0,2})91(\s*[\\-]\s*)?|[0]?)?[789]\d{9}$/;
+  //     if (!mobPattern.test(phone)) {
+  //       formIsValid = false;
+  //       formErrors["phoneErr"] = "Invalid phone number.";
+  //     }
+  //   }
+  //   //Phone number
+  //   if (!confirmphone) {
+  //     formIsValid = false;
+  //     formErrors["confirmphoneErr"] = "Confirm your phone number.";
+  //   } else {
+  //     var mobPattern = /^(?:(?:\\+|0{0,2})91(\s*[\\-]\s*)?|[0]?)?[789]\d{9}$/;
+  //     if (!mobPattern.test(confirmphone)) {
+  //       formIsValid = false;
+  //       formErrors["confirmphoneErr"] = "Invalid phone number.";
+  //     }
+  //   }
 
-    //branch
-    if (branch === "" || branch === "select") {
-      formIsValid = false;
-      formErrors["branchErr"] = "Select branch.";
-    }
+  //   //branch
+  //   if (branch === "" || branch === "select") {
+  //     formIsValid = false;
+  //     formErrors["branchErr"] = "Select branch.";
+  //   }
 
-    //Student codingProfile
-    if (!codingProfile) {
-      formIsValid = false;
-      formErrors["codingProfileErr"] = "codingProfile is required.";
-      // return <Link to="ThankYou.js" />;
-    }
+  //   //Student codingProfile
+  //   if (!codingProfile) {
+  //     formIsValid = false;
+  //     formErrors["codingProfileErr"] = "codingProfile is required.";
+  //     // return <Link to="ThankYou.js" />;
+  //   }
 
-    this.setState({ formErrors: formErrors });
-    return formIsValid;
-  }
+  //   this.setState({ formErrors: formErrors });
+  //   return formIsValid;
+  // }
 
   handleChange = (e) => {
     const { name, value } = e.target;
@@ -133,6 +133,7 @@ class AdmissionForm extends Component {
         // this.setState({ message: "Thanks For Registering" });
         this.setState({ msgcolor: "#1bec1b" });
         window.location.replace('/thanks');
+
 
 
       } else {
@@ -180,7 +181,7 @@ class AdmissionForm extends Component {
                     value={this.state.fullname}
                     onChange={this.handleChange}
                     placeholder="Your full name.."
-                    className={fullnameErr ? " showError" : ""}
+                    className=""
                     onInvalid={(e) =>
                       e.target.setCustomValidity("Full Name is required")
                     }
@@ -201,7 +202,7 @@ class AdmissionForm extends Component {
                     value={this.state.regdNo}
                     onChange={this.handleChange}
                     placeholder="Your registration number.."
-                    className={regdNoErr ? " showError" : ""}
+                    className=""
                     onInvalid={(e) =>
                       e.target.setCustomValidity("Registration No is required")
                     }
@@ -219,7 +220,7 @@ class AdmissionForm extends Component {
                   <select
                     name="year"
                     onChange={this.handleChange}
-                    className={yearErr ? " showError" : ""}
+                    className=""
                     value={this.state.year}
                     onInvalid={(e) =>
                       e.target.setCustomValidity("Year is required")
@@ -245,7 +246,7 @@ class AdmissionForm extends Component {
                     name="branch"
                     value={this.state.branch}
                     onChange={this.handleChange}
-                    className={branchErr ? " showError" : ""}
+                    className=""
                     onInvalid={(e) =>
                       e.target.setCustomValidity("Branch is required")
                     }
@@ -281,7 +282,7 @@ class AdmissionForm extends Component {
                     value={this.state.email}
                     onChange={this.handleChange}
                     placeholder="Your email id.."
-                    className={emailErr ? " showError" : ""}
+                    className=""
                     onInvalid={(e) =>
                       e.target.setCustomValidity("Email Id is required")
                     }
@@ -302,7 +303,7 @@ class AdmissionForm extends Component {
                     onChange={this.handleChange}
                     value={this.state.phone}
                     placeholder="Your phone number.."
-                    className={phoneErr ? " showError" : ""}
+                    className=""
                     onInvalid={(e) =>
                       e.target.setCustomValidity("Phone Number is required")
                     }
@@ -323,7 +324,7 @@ class AdmissionForm extends Component {
                     onChange={this.handleChange}
                     value={this.state.confirmphone}
                     placeholder="Confirm your phone number.."
-                    className={confirmphoneErr ? " showError" : ""}
+                    className=""
                     onInvalid={(e) =>
                       e.target.setCustomValidity("Confirm phone Number is required")
                     }
@@ -344,7 +345,7 @@ class AdmissionForm extends Component {
                     value={this.state.codingProfile}
                     onChange={this.handleChange}
                     placeholder="HackerRank/HackerEarth profile link.."
-                    className={codingProfileErr ? " showError" : ""}
+                    className=""
                     onInvalid={(e) =>
                       e.target.setCustomValidity("Coding Profile Link is required")
                     }

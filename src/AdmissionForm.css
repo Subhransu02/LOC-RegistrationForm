@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400;500&display=swap');
 
 * {
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
   margin: 0px;
   padding: 0px;
 
@@ -12,17 +12,29 @@ body{
 }
 
 .formDiv {
+  /* font-family: 'Poppins', sans-serif; */
+  font-family: 'Source Code Pro', 'Poppins', sans-serif, monospace;
   min-height: 100vh;
-  /* background: #2a2929; #2a2929 */
   background: black;
+}
+
+.logo{
+  text-align: center;
+}
+
+.logo img{
+  width: 70px;
+  /* height: 40px; */
 }
 
 .heading {
   color: #45ed4e;
   font-size: 30px;
-  padding-top: 30px;
   text-align: center;
   font-weight: 500;
+  margin-bottom: 20px;
+  font-family: 'Source Code Pro', 'Poppins', sans-serif, monospace;
+
 }
 
 .rocket{
@@ -32,7 +44,6 @@ body{
   top: 5px;
 }
 
-/* style={{ textAlign: "center"}} */
 .form_wrap {
   display: flex;
   align-items: center;
@@ -50,20 +61,25 @@ body{
 
 label {
   color: aliceblue;
+  font-family: 'Source Code Pro', 'Poppins', sans-serif, monospace;
 
 }
 
 input,
 select {
+  
+  /* font-family: 'Poppins', sans-serif; */
+  font-family: 'Source Code Pro', 'Poppins', sans-serif, monospace;
   width: 100%;
-  height: 40px;
-  /* text-align: center;    */
-  padding: 0px 20px;
+  height: fit-content;
+  padding: 12px 15px;
   margin: 8px 0;
   display: flex;
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
+  outline: 2px solid black;
+  border: 2px solid black;
 }
 
 select:required:invalid{
@@ -80,7 +96,7 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-input:focus, select:focus{
+input:focus,select:focus{
   outline: 2px solid #45ed4e;
   border: 2px solid black;
 }
@@ -96,6 +112,9 @@ input:focus, select:focus{
   cursor: pointer;
   transition: 0.1s all;
   font-size: 18px;
+  font-family: 'Source Code Pro', 'Poppins', sans-serif, monospace;
+
+  
 }
 
 .submit:hover {
@@ -171,4 +190,6 @@ input:focus, select:focus{
   padding: 10px 0 20px 0;
   color: #45ed4e;
   text-align: center;
+  font-family: 'Source Code Pro', 'Poppins', sans-serif, monospace;
+
 }
